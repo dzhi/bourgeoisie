@@ -1,0 +1,75 @@
+diff --git a/data_conversion.m b/data_conversion.m
+index e8b1f32..e43e966 100644
+--- a/data_conversion.m
++++ b/data_conversion.m
+@@ -1,6 +1,6 @@
+ adult_data = readtable('adult.data.dat');
+ a = table2cell(adult_data);
+-N = 32560;
++N = size(a,1);
+ 
+ %age
+ age = [];
+@@ -10,7 +10,7 @@ end
+ age = age';
+ 
+ %work class
+-workclass = zeros(32560, 8);
++workclass = zeros(N, 8);
+ for i = 1:N
+ 	if strcmp(a{i,2}, 'Private')
+ 		workclass(i,1) = 1;
+@@ -46,7 +46,7 @@ end
+ education = education';
+ 
+ %martial-status
+-martialstatus = zeros(32560, 7);
++martialstatus = zeros(N, 7);
+ for i = 1:N
+ 	if strcmp(a{i,6}, 'Married-civ-spouse')
+ 		martialstatus(i,1) = 1;
+@@ -66,7 +66,7 @@ for i = 1:N
+ end
+ 
+ %occupation
+-occupation = zeros(32560, 14);
++occupation = zeros(N, 14);
+ for i = 1:N
+ 	if strcmp(a{i,7}, 'Tech-support')
+ 		occupation(i,1) = 1;
+@@ -99,7 +99,7 @@ for i = 1:N
+ 	end
+ end
+ %relationship
+-relationship = zeros(32560, 6);
++relationship = zeros(N, 6);
+ for i = 1:N
+ 	if strcmp(a{i,8}, 'Wife')
+ 		relationship(i,1) = 1;
+@@ -117,7 +117,7 @@ for i = 1:N
+ end
+ 
+ %race
+-race = zeros(32560, 5);
++race = zeros(N, 5);
+ for i = 1:N
+ 	if strcmp(a{i,9}, 'White')
+ 		race(i,1) = 1;
+@@ -133,7 +133,7 @@ for i = 1:N
+ end
+ 
+ %sex
+-sex = zeros(32560, 2);
++sex = zeros(N, 2);
+ for i = 1:N
+ 	if strcmp(a{i,10},'Female')
+ 		sex(i,1) = 1;
+@@ -164,7 +164,7 @@ end
+ hoursperweek = hoursperweek';
+ 
+ %native country
+-nativecountry = zeros(32560, 41);
++nativecountry = zeros(N, 41);
+ for i = 1:N
+ 	if strcmp(a{i,14}, 'United-States')
+ 		nativecountry(i,1) = 1;
