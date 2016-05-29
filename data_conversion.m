@@ -261,4 +261,4 @@ for i=1:N
 	end
 end
 
-data = [age workclass fnlwgt education martialstatus occupation relationship race sex capitalgain capitalloss hoursperweek nativecountry data];
+data = [age workclass fnlwgt education martialstatus occupation relationship race sex capitalgain capitalloss hoursperweek nativecountry overorunder50k];
