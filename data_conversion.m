@@ -254,7 +254,7 @@ end
 over50k = zeros(N,1);
 for i=1:N
 	if strcmp(a{i,15}, '<=50K')
-		over50k(i,1) = 0;
+		over50k(i,1) = -1;
 	elseif strcmp(a{i,15}, '>50K')
 		over50k(i,1) = 1;
 	end
