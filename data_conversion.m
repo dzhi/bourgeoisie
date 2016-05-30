@@ -251,12 +251,12 @@ for i = 1:N
 	end
 end
 
-overorunder50k = zeros(N,1);
+over50k = zeros(N,1);
 for i=1:N
 	if strcmp(a{i,15}, '<=50K')
-		overorunder50k(i,1) = 0;
+		over50k(i,1) = 0;
 	elseif strcmp(a{i,15}, '>50K')
-		overorunder50k(i,1) = 1;
+		over50k(i,1) = 1;
 	end
 end
 
