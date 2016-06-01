@@ -1,5 +1,7 @@
 %clc; clear; close all;
-
+data_conversion;
+Ytrain = over50k;
+Xtrain = data;
 %set max iteration
 maxiter = 10000;
 
