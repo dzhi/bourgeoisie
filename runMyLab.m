@@ -1,13 +1,19 @@
 clear all
 data_conversion
 
+warning('off','all')
+
+acc = [];
+underacc = [];
+overacc = [];
+
 original_data = data;
 for iteration = 0:3
 	
 	if iteration == 0
 		data = original_data;
 	elseif iteration == 1
-		data = [age education martialstatus race sex country];
+		data = [age education martialstatus race sex nativecountry];
 	elseif iteration == 2
 		data = [age workclass education relationship race sex capitalgain capitalloss ];
 	elseif iteration == 3
@@ -45,18 +51,11 @@ for iteration = 0:3
 		end
 	end
 	
-	if iteration == 0
-		fprintf('Using the original data (no subsets)\n');
-	elseif iteration == 1
-		fprintf('Using only age, education, martialstatus, race, sex, and country\n');
-	elseif iteration == 2
-		fprintf('Using age, workclass, education, relationship, race, sex, and capital gain/loss\n');
-	elseif iteration == 3
-		fprintf('Using ONLY capitalgain/loss')
-	end
+
 	
 	total_accuracy = sum(results) / (N - train_num);
-	fprintf('Overall accuracy is: %f \n', total_accuracy);
+	acc(end+1) = total_accuracy;
+
 
 	num_under_test = 0;
 	num_over_test = 0;
@@ -81,10 +80,38 @@ for iteration = 0:3
 	end
 
 	overaccuracy = num_over_correct / num_over_test;
-	fprintf('Accuracy for those Over 50K income: %f\n', overaccuracy);
+	overacc(end + 1) = overaccuracy;
+
 	underaccuracy = num_under_correct / num_under_test;
-	fprintf('Accuracy for those Under 50K income: %f\n', underaccuracy);
+	underacc(end+1) = underaccuracy;
+
 	
 	fprintf('-------------------------------------\n');
 	
+end
+
+fprintf('--------------------------------\n');
+for k = 0:3
+	if k == 0
+		fprintf('Using the original data (no subsets)\n');
+		fprintf('Overall accuracy is: %f \n', acc(k+1));
+		fprintf('Accuracy for those Over 50K income: %f\n', overacc(k+1));
+		fprintf('Accuracy for those Under 50K income: %f\n', underacc(k+1));
+	elseif k == 1
+		fprintf('Using only age, education, martialstatus, race, sex, and country\n');
+		fprintf('Overall accuracy is: %f \n', acc(k+1));
+		fprintf('Accuracy for those Over 50K income: %f\n', overacc(k+1));
+		fprintf('Accuracy for those Under 50K income: %f\n', underacc(k+1));
+	elseif k == 2
+		fprintf('Using age, workclass, education, relationship, race, sex, and capital gain/loss\n');
+		fprintf('Overall accuracy is: %f \n', acc(k+1));
+		fprintf('Accuracy for those Over 50K income: %f\n', overacc(k+1));
+		fprintf('Accuracy for those Under 50K income: %f\n', underacc(k+1));
+	elseif k == 3
+		fprintf('Using ONLY capitalgain/loss')
+		fprintf('Overall accuracy is: %f \n', acc(k+1));
+		fprintf('Accuracy for those Over 50K income: %f\n', overacc(k+1));
+		fprintf('Accuracy for those Under 50K income: %f\n', underacc(k+1));
+	end
+	fprintf('--------------------------------\n');
 end

@@ -1,7 +1,7 @@
 adult_data = readtable('adult.data.dat');
 adult_test = readtable('adult.test.dat');
 
-for j = 1:2
+for j = 2:-1:1
 	if j == 1
 		a = table2cell(adult_data);
 		N = size(a,1);
