@@ -1,8 +1,17 @@
+%this is the first "main" script of the lab.
+%HOW TO USE: make sure data_conversion.m, softsvm.m, and adult.test and adult.data (renamed to
+% adult.test.dat and adult.data.dat) are all in the same directory. Simply run this script to
+% -- modify train_num to vary how many samples you want to use for training
+% -- this script does the whole lab for the specified training samples using ONLY the implementations
+% 		from lab 7. 
+%			-- IF you want to use the other SVM functions (aka the one from matlab) use the other script
+
 clear all
 data_conversion
 
 warning('off','all')
 
+train_num = 20000;
 acc = [];
 underacc = [];
 overacc = [];
@@ -38,7 +47,7 @@ for iteration = 0:3
 
 	%this code did things using ONLY the adult_data file, proportionalizing it into a test/train
 
-	train_num = 20000;
+
 	N = 32560;
 	[w, b] = softsvm(data(1:train_num,:), over50k(1:train_num), 0.005);	%used gamma = 0.005 in the lab
 	prediction = data((train_num+1):N,:) * w' + b;

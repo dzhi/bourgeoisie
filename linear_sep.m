@@ -1,3 +1,10 @@
+%this script is the property of Rishir Dua: https://github.com/rishirdua/linear-separability-matlab
+% it has been tweaked to perform for this lab. It runs independently of runMyLab.
+%HOW TO USE: put data_conversion.m, adult.test.dat, adult.data.dat in the same directory as this.
+%			-- afterwards, just run linear_sep
+%	note: the algorithm does not converge for our dataset, increasing the number of maxiter will prolong the nonconvergence
+
+
 %clc; clear; close all;
 data_conversion;
 Ytrain = over50k;
